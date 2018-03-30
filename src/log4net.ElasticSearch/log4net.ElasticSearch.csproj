@@ -9,8 +9,8 @@
     <Platforms>AnyCPU</Platforms>
 
     <!-- Properties for nuget packing -->
-    <PackageId>log4net.ElasticSearch</PackageId>
-    <Authors>JP Toto</Authors>
+    <PackageId>Rubrikk.log4net.ElasticSearch</PackageId>
+    <Authors>JP Toto, Stefan Dragos</Authors>
     <PackageIconUrl>http://nest.azurewebsites.net/images/nuget-icon.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/jptoto/log4net.ElasticSearch/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>http://jptoto.github.io/log4net.ElasticSearch/</PackageProjectUrl>
