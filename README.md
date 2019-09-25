@@ -1,19 +1,18 @@
 log4net.ElasticSearch
 =====================
 
-[![NuGet Status](http://img.shields.io/badge/nuget-2.3.6-green.svg)](https://www.nuget.org/packages/log4net.ElasticSearch/)
-
-[![Build status](https://ci.appveyor.com/api/projects/status/t877sp1e5eleye4n/branch/master)](https://ci.appveyor.com/project/jptoto/log4net-elasticsearch/branch/master)
+[![NuGet](https://img.shields.io/nuget/v/log4net.ElasticSearch.svg)](https://www.nuget.org/packages/log4net.ElasticSearch)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/tyu8angrnnuf7i46/branch/master?svg=true)](https://ci.appveyor.com/project/bruno-garcia/log4net-elasticsearch/branch/master)
 
 log4net.ElasticSearch is a module for the [log4net](http://logging.apache.org/log4net/) library to log messages to the [ElasticSearch](http://www.elasticsearch.org) document database. ElasticSearch offers robust full-text searching an analyzation so that errors and messages can be indexed quickly and searched easily.
 
 ### Features:
-* Supports .NET 4.0+
+* Supports .NET 4.0+, .NET Standard 2.0+
 * Easy installation and setup via [Nuget](https://nuget.org/packages/log4net.ElasticSearch/)
 * Full support for the Elasticsearch _bulk API for buffered logging
 
 ### Usage:
-Please see the [DOCUMENTATION](https://github.com/jptoto/log4net.ElasticSearch/wiki) Wiki page to begin logging errors to ElasticSearch!
+Please see the [DOCUMENTATION](https://github.com/bruno-garcia/log4net.ElasticSearch/wiki) Wiki page to begin logging errors to ElasticSearch!
 
 ### Example log4net Document in Elasticsearch
 
@@ -65,10 +64,10 @@ Please see the [DOCUMENTATION](https://github.com/jptoto/log4net.ElasticSearch/w
 ```
 
 ### Issues:
-I do my best to reply to issues or questions ASAP. Please use the [ISSUES](https://github.com/jptoto/log4net.ElasticSearch/issues) page to submit questions or errors.
+I do my best to reply to issues or questions ASAP. Please use the [ISSUES](https://github.com/bruno-garcia/log4net.ElasticSearch/issues) page to submit questions or errors.
 
 ### License:
-[MIT License](https://github.com/jptoto/log4net.ElasticSearch/blob/master/LICENSE)
+[MIT License](https://github.com/bruno-garcia/log4net.ElasticSearch/blob/master/LICENSE)
 
 ### Thanks:
 - [@mpdreamz](https://github.com/Mpdreamz) and the team for their great work on the NEST library!

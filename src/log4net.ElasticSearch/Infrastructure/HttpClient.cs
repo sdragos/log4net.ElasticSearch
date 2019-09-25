@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using log4net.ElasticSearch.Models;
@@ -28,7 +29,7 @@ namespace log4net.ElasticSearch.Infrastructure
                 streamWriter.Write(item.ToJson());
                 streamWriter.Flush();
 
-                var httpResponse = (HttpWebResponse) httpWebRequest.GetResponse();
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 httpResponse.Close();
 
                 if (httpResponse.StatusCode != HttpStatusCode.Created)
@@ -79,11 +80,11 @@ namespace log4net.ElasticSearch.Infrastructure
 
         public static HttpWebRequest RequestFor(Uri uri)
         {
-            var httpWebRequest = (HttpWebRequest) WebRequest.Create(uri);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
 
             httpWebRequest.ContentType = ContentType;
             httpWebRequest.Method = Method;
-            
+
             if (!string.IsNullOrWhiteSpace(uri.UserInfo))
             {
                 httpWebRequest.Headers.Remove(HttpRequestHeader.Authorization);

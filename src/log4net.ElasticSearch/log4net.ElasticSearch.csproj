@@ -1,27 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>log4net.ElasticSearch</Title>
-    <AssemblyName>log4net.ElasticSearch</AssemblyName>
-    <Version>2.3.7</Version>
-    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
+    <Title>Rubrikk.log4net.ElasticSearch</Title>
+    <AssemblyName>Rubrikk.log4net.ElasticSearch</AssemblyName>
+    <Version>2.6.0</Version>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
     <RootNamespace>log4net.ElasticSearch</RootNamespace>
-    <Platforms>AnyCPU</Platforms>
 
     <!-- Properties for nuget packing -->
     <PackageId>Rubrikk.log4net.ElasticSearch</PackageId>
     <Authors>JP Toto, Stefan Dragos</Authors>
     <PackageIconUrl>http://nest.azurewebsites.net/images/nuget-icon.png</PackageIconUrl>
-    <PackageLicenseUrl>https://github.com/jptoto/log4net.ElasticSearch/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>http://jptoto.github.io/log4net.ElasticSearch/</PackageProjectUrl>
-    <Description>log4net.Elasticsearch is a log4net adapter for easy logging of exceptions and messages to Elasticsearch indices. Tested through Elasticsearch 5.6.3</Description>
+    <PackageLicense>MIT</PackageLicense>
+    <PackageProjectUrl>https://bruno-garcia.github.io/log4net.ElasticSearch/</PackageProjectUrl>
+    <Description>log4net.Elasticsearch is a log4net adapter for easy logging of exceptions and messages to Elasticsearch indices. Work with Elasticsearch 7.0+</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2018</Copyright>
-    <PackageReleaseNotes>
-      Add support for netstandard2.0
-    </PackageReleaseNotes>
+    <Copyright>Copyright 2019</Copyright>
+    <PackageReleaseNotes>Please refer to https://github.com/bruno-garcia/log4net.ElasticSearch/releases</PackageReleaseNotes>
     <PackageTags>log logging exception elasticsearch log4net</PackageTags>
-    <PackageOutputPath>..\..\bin</PackageOutputPath>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
@@ -29,15 +25,10 @@
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <AssemblyVersion>2.5.0.0</AssemblyVersion>
+    <FileVersion>2.5.0.0</FileVersion>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\readme.txt" Link="readme.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\LICENSE" Link="LICENSE" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />

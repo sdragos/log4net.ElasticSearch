@@ -4,7 +4,7 @@ using Nest;
 
 namespace log4net.ElasticSearch.Tests
 {
-    [ElasticsearchType(Name = "LogEvent")]
+    [ElasticsearchType()]
     public class LogEvent
     {
         public LogEvent()

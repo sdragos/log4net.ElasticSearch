@@ -46,8 +46,7 @@ namespace log4net.ElasticSearch.Tests.IntegrationTests
         static ConnectionSettings ConnectionSettings(string index)
         {
             var defaultConnectionSettings = new ConnectionSettings(ElasticSearchUri()).
-                DefaultIndex(index).                
-                DefaultTypeNameInferrer(t => t.Name).
+                DefaultIndex(index).
                 DefaultFieldNameInferrer(p => p);
 
             return !AppSettings.Instance.UseFiddler()
@@ -64,7 +63,7 @@ namespace log4net.ElasticSearch.Tests.IntegrationTests
 
         void DeleteDefaultIndex()
         {
-            Client.DeleteIndex(new DeleteIndexRequest(defaultIndex));
+            Client.Indices.Delete(new DeleteIndexRequest(defaultIndex));
         }
     }
 
