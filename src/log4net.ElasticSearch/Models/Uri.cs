@@ -18,12 +18,12 @@ namespace log4net.ElasticSearch.Models
             if (!string.IsNullOrWhiteSpace(uri.User()) && !string.IsNullOrWhiteSpace(uri.Password()))
             {
                 return
-                    new System.Uri(string.Format("{0}://{1}:{2}@{3}:{4}/{5}/logEvent{6}{7}", uri.Scheme(), uri.User(), uri.Password(),
-                                                 uri.Server(), uri.Port(), uri.Index(), uri.Routing(), uri.Bulk()));
+                    new System.Uri(string.Format("{0}://{1}:{2}@{3}:{4}/{5}{6}{7}", uri.Scheme(), uri.User(), uri.Password(),
+                                                 uri.Server(), uri.Port(), uri.Index(), uri.BulkOrDoc(), uri.Routing()));
             }
             return string.IsNullOrEmpty(uri.Port())
-                ? new System.Uri(string.Format("{0}://{1}/{2}/logEvent{3}{4}", uri.Scheme(), uri.Server(), uri.Index(), uri.Routing(), uri.Bulk()))
-                : new System.Uri(string.Format("{0}://{1}:{2}/{3}/logEvent{4}{5}", uri.Scheme(), uri.Server(), uri.Port(), uri.Index(), uri.Routing(), uri.Bulk()));
+                ? new System.Uri(string.Format("{0}://{1}/{2}{3}{4}", uri.Scheme(), uri.Server(), uri.Index(), uri.BulkOrDoc(), uri.Routing()))
+                : new System.Uri(string.Format("{0}://{1}:{2}/{3}{4}{5}", uri.Scheme(), uri.Server(), uri.Port(), uri.Index(), uri.BulkOrDoc(), uri.Routing()));
         }
 
         public static Uri For(string connectionString)
@@ -67,15 +67,17 @@ namespace log4net.ElasticSearch.Models
             return string.Empty;
         }
 
-        string Bulk()
+        string BulkOrDoc()
         {
             var bufferSize = connectionStringParts[Keys.BufferSize];
             if (Convert.ToInt32(bufferSize) > 1)
             {
                 return "/_bulk";
             }
-
-            return string.Empty;
+            else
+            {
+                return "/_doc";
+            }
         }
 
         string Index()
@@ -83,7 +85,7 @@ namespace log4net.ElasticSearch.Models
             var index = connectionStringParts[Keys.Index];
 
             return IsRollingIndex(connectionStringParts)
-                       ? "{0}-{1}".With(index, Clock.Date.ToString("yyyy.MM.dd"))
+                       ? "{0}-{1}".With(index, Clock.Date.ToString("yyyy-MM-dd"))
                        : index;
         }
 

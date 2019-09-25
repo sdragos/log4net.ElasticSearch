@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using log4net.ElasticSearch.Models;
@@ -25,16 +26,23 @@ namespace log4net.ElasticSearch.Infrastructure
 
             using (var streamWriter = GetRequestStream(httpWebRequest))
             {
-                streamWriter.Write(item.ToJson());
-                streamWriter.Flush();
-
-                var httpResponse = (HttpWebResponse) httpWebRequest.GetResponse();
-                httpResponse.Close();
-
-                if (httpResponse.StatusCode != HttpStatusCode.Created)
+                try
                 {
-                    throw new WebException(
-                        "Failed to post {0} to {1}.".With(item.GetType().Name, uri));
+                    streamWriter.Write(item.ToJson());
+                    streamWriter.Flush();
+
+                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    httpResponse.Close();
+
+                    if (httpResponse.StatusCode != HttpStatusCode.Created)
+                    {
+                        throw new WebException(
+                            "Failed to post {0} to {1}.".With(item.GetType().Name, uri));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String s = ex.Message;
                 }
             }
         }
@@ -83,7 +91,7 @@ namespace log4net.ElasticSearch.Infrastructure
 
             httpWebRequest.ContentType = ContentType;
             httpWebRequest.Method = Method;
-            
+
             if (!string.IsNullOrWhiteSpace(uri.UserInfo))
             {
                 httpWebRequest.Headers.Remove(HttpRequestHeader.Authorization);

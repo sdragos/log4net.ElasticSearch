@@ -32,7 +32,8 @@ namespace log4net.ElasticSearch
             if (bufferSize <= 1)
             {
                 // Post the logEvents one at a time throught the ES insert API
-                logEvents.Do(logEvent => httpClient.Post(uri, logEvent));
+                logEvents.Do(logEvent => 
+                    httpClient.Post(uri, logEvent));
             }
             else
             {
