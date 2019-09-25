@@ -139,7 +139,7 @@ namespace log4net.ElasticSearch.Tests.IntegrationTests
                 }, 20, 1000);
         }
 
-        [Fact]
+        [Fact(Skip = "LogicalThreadContext properties cause SerializationException")]
         public void Local_thread_context_properties_cause_error()
         {
             const string localThreadPropertyName = "logicalThreadProperty";
