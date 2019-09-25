@@ -26,23 +26,16 @@ namespace log4net.ElasticSearch.Infrastructure
 
             using (var streamWriter = GetRequestStream(httpWebRequest))
             {
-                try
-                {
-                    streamWriter.Write(item.ToJson());
-                    streamWriter.Flush();
+                streamWriter.Write(item.ToJson());
+                streamWriter.Flush();
 
-                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                    httpResponse.Close();
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                httpResponse.Close();
 
-                    if (httpResponse.StatusCode != HttpStatusCode.Created)
-                    {
-                        throw new WebException(
-                            "Failed to post {0} to {1}.".With(item.GetType().Name, uri));
-                    }
-                }
-                catch (Exception ex)
+                if (httpResponse.StatusCode != HttpStatusCode.Created)
                 {
-                    String s = ex.Message;
+                    throw new WebException(
+                        "Failed to post {0} to {1}.".With(item.GetType().Name, uri));
                 }
             }
         }
@@ -87,7 +80,7 @@ namespace log4net.ElasticSearch.Infrastructure
 
         public static HttpWebRequest RequestFor(Uri uri)
         {
-            var httpWebRequest = (HttpWebRequest) WebRequest.Create(uri);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
 
             httpWebRequest.ContentType = ContentType;
             httpWebRequest.Method = Method;
