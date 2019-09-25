@@ -34,9 +34,7 @@ namespace log4net.ElasticSearch.Tests.IntegrationTests
 
             Retry.Ignoring<XunitException>(() =>
             {
-                var logEntries =
-                    elasticClient.Search<
-                        logEvent>(s => s.Query(qd => qd.Term(le => le.message, message)));
+                var logEntries = elasticClient.Search<logEvent>(s => s.Query(qd => qd.Term(le => le.message, message)));
 
                 logEntries.Total.Should().Be(1);
             });
