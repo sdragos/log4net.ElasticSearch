@@ -33,7 +33,7 @@ task Test {
 
 task CreateNugetPackage {
     exec {
-        & dotnet pack $nuget_csproj_path
+        & dotnet pack $nuget_csproj_path -c $config -o $bin_dir
     }
 }
 
